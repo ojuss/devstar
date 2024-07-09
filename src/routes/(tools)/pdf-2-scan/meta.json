@@ -1,23 +1,34 @@
 {
-    "name": "",
-    "description":"",
-    "contributors": [{
-        "name": "",
-        "githubId": ""
-    }, {
-        "name": "",
-        "githubId": ""
+  "name": "PDF to Scan",
+  "description": "The PDF to Scan tool is a versatile solution that transforms your digital PDFs into scanned-looking documents with ease. By simulating the appearance of a scanned document, this tool helps users convert pristine PDFs into versions that look authentic and manually scanned. Whether you need to achieve a high, moderate, or low intensity of the scanned effect, PDF to Scan provides the flexibility to customize the output to your preference. Ideal for professionals who need to mimic scanned documents for legal, archival, or aesthetic purposes, this tool ensures your PDFs look genuine and professional. Simplify your document processing and achieve a realistic scanned appearance with the PDF to Scan tool.",
+  "contributors": [
+    {
+      "name": "Abdur Rehman Shaikh",
+      "githubId": "abdurrahmanshkh"
     },
     {
-        "name": "",
-        "githubId": ""
+      "name": "Arnav Dwivedi",
+      "githubId": "Arnavgits"
     },
     {
-        "name": "",
-        "githubId": ""
+      "name": "Bhuvaneswari Kapuluru",
+      "githubId": ""
     },
     {
-        "name": "",
-        "githubId": ""
-    }]
+      "name": "Faizan Shabir",
+      "githubId": "mrbeigh"
+    },
+    {
+      "name": "Nishant Rajat",
+      "githubId": "Nishant-Rajat71"
+    },
+    {
+      "name": "Ojus",
+      "githubId": "ojuss"
+    },
+    {
+      "name": "Viraj Walavalkar",
+      "githubId": ""
+    }
+  ]
 }
