@@ -26,19 +26,62 @@
     }
 
     function applyGrayscale(context, width, height) {
-       // Code
+        const imageData = context.getImageData(0, 0, width, height);
+        const data = imageData.data;
+        
+        for (let i = 0; i < data.length; i += 4) {
+            const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+            data[i] = avg;     // Red
+            data[i + 1] = avg; // Green
+            data[i + 2] = avg; // Blue
+        // Alpha channel (data[i + 3]) is left unchanged
+        }
+        
+        context.putImageData(imageData, 0, 0);
     }
 
     function addNoise(context, width, height, intensity) {
-        // Code
+        const imageData = context.getImageData(0, 0, width, height);
+        const data = imageData.data;
+        
+        for (let i = 0; i < data.length; i += 4) {
+            const noise = Math.random() * 2 - 1; // Random value between -1 and 1
+            data[i] += noise * intensity;     // Red
+            data[i + 1] += noise * intensity; // Green
+            data[i + 2] += noise * intensity; // Blue
+            
+            // Ensure values stay within 0-255 range
+            data[i] = Math.max(0, Math.min(255, data[i]));
+            data[i + 1] = Math.max(0, Math.min(255, data[i + 1]));
+            data[i + 2] = Math.max(0, Math.min(255, data[i + 2]));
+        }
+        
+        context.putImageData(imageData, 0, 0);
     }
 
     function addBlur(context, width, height, intensity) {
-       // Code
+        context.filter = `blur(${intensity}px)`;
+        context.drawImage(context.canvas, 0, 0);
+        context.filter = 'none';
     }
 
     function addContrast(context, width, height, contrast) {
-        // Code
+        const imageData = context.getImageData(0, 0, width, height);
+        const data = imageData.data;
+        const factor = (259 * (contrast + 255)) / (255 * (259 - contrast));
+        
+        for (let i = 0; i < data.length; i += 4) {
+            data[i] = factor * (data[i] - 128) + 128;     // Red
+            data[i + 1] = factor * (data[i + 1] - 128) + 128; // Green
+            data[i + 2] = factor * (data[i + 2] - 128) + 128; // Blue
+            
+            // Ensure values stay within 0-255 range
+            data[i] = Math.max(0, Math.min(255, data[i]));
+            data[i + 1] = Math.max(0, Math.min(255, data[i + 1]));
+            data[i + 2] = Math.max(0, Math.min(255, data[i + 2]));
+        }
+        
+        context.putImageData(imageData, 0, 0);
     }
 
     async function convertToScannedPDF(inputArrayBuffer) {
