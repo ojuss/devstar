@@ -9,6 +9,7 @@
     let contrast = 7;
     let noiseIntensity = 7;
     let blurIntensity = 7;
+    let pageTilt = 7;
     let applyGray = false;
     let selectedPreset = 'default';
     let isProcessing = false;
@@ -31,9 +32,9 @@
     }
 
     const presets = {
-        default: { contrast: 7, noiseIntensity: 7, blurIntensity: 7 },
-        high: { contrast: 10, noiseIntensity: 10, blurIntensity: 10 },
-        low: { contrast: 4, noiseIntensity: 4, blurIntensity: 4 }
+        default: { contrast: 7, noiseIntensity: 7, blurIntensity: 7, pageTilt: 7 },
+        high: { contrast: 10, noiseIntensity: 10, blurIntensity: 10, pageTilt: 10 },
+        low: { contrast: 4, noiseIntensity: 4, blurIntensity: 4, pageTilt: 4 }
     };
 
     function applyPreset(preset) {
@@ -41,6 +42,7 @@
         contrast = values.contrast;
         noiseIntensity = values.noiseIntensity;
         blurIntensity = values.blurIntensity;
+        pageTilt = values.pageTilt;
     }
 
     $: applyPreset(selectedPreset);
@@ -143,8 +145,8 @@
 
             context.setTransform(
                 1,
-                0.001,
-                -0.001,
+                pageTilt/1000,
+                -pageTilt/1000,
                 1,
                 (Math.random() - 0.5) * 2,
                 (Math.random() - 0.5) * 2
@@ -206,6 +208,11 @@
             <li class="w-full">
                 <Label class="p-4 pt-3">Blur Intensity: {blurIntensity}
                     <Range min="0" max="10" bind:value={blurIntensity} />
+                </Label>    
+            </li>
+            <li class="w-full">
+                <Label class="p-4 pt-3">Page Tilt: {pageTilt}
+                    <Range min="0" max="10" bind:value={pageTilt} />
                 </Label>    
             </li>
             <li class="min-w-max">
